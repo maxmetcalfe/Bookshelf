@@ -1,4 +1,10 @@
 {
+  "name": "Bookshelf",
+  "version": "1.0.0",
+  "description": "Display a list of books on a book shelf",
+  "author": "Max Metcalfe <hello@maxmetcalfe.com>",
+  "repository": "git@github.com:maxmetcalfe/Bookshelf.git",
+  "license": "MIT",
   "scripts": {
     "dev": "next"
   },

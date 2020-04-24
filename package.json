@@ -6,7 +6,9 @@
   "repository": "git@github.com:maxmetcalfe/Bookshelf.git",
   "license": "MIT",
   "scripts": {
-    "dev": "next"
+    "dev": "next",
+    "build": "next build",
+     "start": "next start"
   },
   "dependencies": {
     "fast-xml-parser": "^3.16.0",

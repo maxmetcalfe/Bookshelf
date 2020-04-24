@@ -37,10 +37,6 @@ function Main({ data }) {
 }
 
 export const getServerSideProps = async ({ query }) => {
-  if (!query.books || !query.books.length) {
-    return { props: { error } }
-  }
-
   let books = query.books.split(',')
 
   let data = await Promise.all(books.map((book) => {

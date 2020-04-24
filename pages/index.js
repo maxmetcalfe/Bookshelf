@@ -16,7 +16,27 @@ function fetchBookData(url) {
   })
 }
 
-function Main({ data }) {
+function Main({ data, error }) {
+  if (error) {
+    return (
+      <div>
+        <style jsx>{`
+          div {
+            height: 100px;
+            background-color: rgba(205, 0, 0, 0.1);
+            border-radius: 20px;
+            border: solid 1px rgba(205, 0, 0, 0.2);
+            margin: 20px;
+            text-align: center;
+            color: rgba(150, 0, 0, 0.9);
+            font-family: "Monaco";
+          }
+        `}</style>
+        <h1>Please provide a list of book ids in the query string.</h1>
+      </div>
+    )
+  }
+
   let bookElements = []
   data.map((book, i) => {
     let bookProps = getPropsForBook(book)  
@@ -37,6 +57,9 @@ function Main({ data }) {
 }
 
 export const getServerSideProps = async ({ query }) => {
+  if (!query.books) {
+    return { props: { error: { msg: "No books IDs provided." } }}
+  }
   let books = query.books.split(',')
 
   let data = await Promise.all(books.map((book) => {

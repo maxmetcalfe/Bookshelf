@@ -22,29 +22,35 @@ function getAuthors(book) {
 }
 
 // Height
+// Rough proporations from https://en.wikipedia.org/wiki/Book_size.
 function getHeight(book) {
+  const FOLLO = 400
+  const QUARTO = 316
+  const OCTAVO = 199
+  const TWELVE = 165
+  const SIXTEEN = 132
+
   if (book.num_pages > 500) {
-    return 400
+    return book.num_pages % 2 == 0 ? FOLLO : OCTAVO;
   }
-  
+
+  if (book.num_pages > 300) {
+    return book.num_pages % 2 == 0 ? QUARTO : TWELVE;
+  }
+
   if (book.num_pages > 200) {
-    return 650
+    return book.num_pages % 2 == 0 ? OCTAVO : SIXTEEN;
   }
-  
-  return 700
+  if (book.num_pages > 100) {
+    return book.num_pages % 2 == 0 ? TWELVE : SIXTEEN;
+  }
+
+  return SIXTEEN
 }
 
 // Width
 function getWidth(book) {
-  if (book.num_pages > 500) {
-    return '100px'
-  }
-  
-  if (book.num_pages > 200) {
-    return '100px'
-  }
-
-  return '100px'
+  return book.num_pages / 10 + "px"
 }
 
 function getMargin(book) {

@@ -10,8 +10,12 @@ function fetchBookData(url) {
     fetch(url)
       .then(res => res.text())
       .then((body) => {
-        let data = parser.parse(body).GoodreadsResponse.book
-        resolve(data)
+        let data = parser.parse(body).GoodreadsResponse;
+        if (data.author) {
+          resolve(data.author.books.book);
+        } else {
+          resolve(data.book)
+        }
       })
   })
 }
@@ -32,7 +36,7 @@ function Main({ data, error }) {
             font-family: "Monaco";
           }
         `}</style>
-        <h1>Please provide a list of book ids in the query string.</h1>
+        <h1>{error.msg}</h1>
       </div>
     )
   }
@@ -51,20 +55,27 @@ function Main({ data, error }) {
       <div id='book-container'>
         {bookElements}
       </div>
-      <Shelf/>
+      // <Shelf/>
     </div>
   )
 }
 
 export const getServerSideProps = async ({ query }) => {
-  if (!query.books) {
-    return { props: { error: { msg: "No books IDs provided." } }}
-  }
-  let books = query.books.split(',')
+  let data
 
-  let data = await Promise.all(books.map((book) => {
-    return fetchBookData(`https://www.goodreads.com/book/show?key=QGHu6iuqWMeKlxaETriDXQ&id=${book}`)
-  }))
+  if (!query.books && !query.author) {
+    return { props: { error: { msg: "No book IDs or author ID provided." } }}
+  }
+
+  if (query.books) {
+    let books = query.books.split(',')
+    data = await Promise.all(books.map((book) => {
+      return fetchBookData(`https://www.goodreads.com/book/show?key=QGHu6iuqWMeKlxaETriDXQ&id=3892`)
+    }))
+  } else if (query.author) {
+    // Only fetch the first page for now.
+    data = await fetchBookData(`https://www.goodreads.com/author/list/${query.author}?key=QGHu6iuqWMeKlxaETriDXQ`)
+  }
 
   return { props: { data }}
 }

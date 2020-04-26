@@ -1,7 +1,10 @@
 
 // Title
 function getTitle(book) {
-  return book.title.split('(')[0]
+  if (book.title.indexOf("(") > -1) {
+    return book.title.split('(')[0]
+  }
+  return book.title
 }
 
 // Authors

@@ -90,10 +90,6 @@ function getFontFamily(book) {
   return '\'Satisfy\', cursive'
 }
 
-function getTitlePosition(book) {
-  
-}
-
 // Background color
 function getBackgroundColor(book) {
   if (book.publication_year < 2000) {

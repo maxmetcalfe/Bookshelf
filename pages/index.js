@@ -24,18 +24,6 @@ function Main({ data, error }) {
   if (error) {
     return (
       <div>
-        <style jsx>{`
-          div {
-            height: 100px;
-            background-color: rgba(205, 0, 0, 0.1);
-            border-radius: 20px;
-            border: solid 1px rgba(205, 0, 0, 0.2);
-            margin: 20px;
-            text-align: center;
-            color: rgba(150, 0, 0, 0.9);
-            font-family: "Monaco";
-          }
-        `}</style>
         <h1>{error.msg}</h1>
       </div>
     )
@@ -52,10 +40,14 @@ function Main({ data, error }) {
 
   return (
     <div>
-      <div id='book-container'>
+      <div>
+        <style jsx>{`
+          div {
+            margin: 50px 5%;
+          }
+        `}</style>
         {bookElements}
       </div>
-      // <Shelf/>
     </div>
   )
 }
@@ -64,7 +56,7 @@ export const getServerSideProps = async ({ query }) => {
   let data
 
   if (!query.books && !query.author) {
-    return { props: { error: { msg: "No book IDs or author ID provided." } }}
+    return { props: { error: { msg: `No book IDs or author ID provided.` } }}
   }
 
   if (query.books) {

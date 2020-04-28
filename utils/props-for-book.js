@@ -58,6 +58,10 @@ function getHeight(book) {
 
 // Width
 function getWidth(book) {
+  if (!book.num_pages) {
+    return "60px"
+  }
+
   return book.num_pages / 10 + "px"
 }
 

@@ -70,12 +70,12 @@ function getMargin(book) {
 }
 
 // Font size
-function getFontSize(book) {
-  if (book.title.length > 15) {
-    return '2rem'
+function getFontSize(title) {
+  if (title.length > 20) {
+    return '10px'
   }
 
-  return '60px'
+  return '40px'
 }
 
 // Font color
@@ -123,23 +123,19 @@ function getBackgroundColor(book) {
 function getPropsForBook(book) {
   let height = getHeight(book);
   let title = getTitle(book);
-
-  // FIXME: Hide long titles, for now.
-  let titleStyle = {
-    display: title.length > 20 ? "none" : "block"
-  }
+  let titleClassName = title.length > 20 ? 'title' : 'title-vertical';
 
   return {
     title: title,
     authors: getAuthors(book),
-    height: height + "px",
+    height: height + 'px',
     width: getWidth(book),
     margin: getMargin(book),
     color: getColor(book),
     backgroundColor: getBackgroundColor(book),
-    fontSize: getFontSize(book),
+    fontSize: getFontSize(title),
     fontFamily: getFontFamily(book),
-    titleStyle: titleStyle
+    titleClassName: titleClassName
   }
 }
 

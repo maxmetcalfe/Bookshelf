@@ -23,7 +23,12 @@ const Book = (props) => {
           padding: 0;
         }
 
-        .text {
+        .title {
+          position: relative;
+          top: 20%
+        }
+
+        .title-vertical {
           position: relative;
           top: 50%;
           left: 50%;
@@ -33,11 +38,7 @@ const Book = (props) => {
         }
 
       `}</style>
-      <div className='text' style={{  
-        display: props.titleStyle.display
-      }}>
-        {props.title}
-      </div>
+      <div className={props.titleClassName}>{props.title}</div>
     </div>
   )
 }

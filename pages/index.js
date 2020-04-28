@@ -44,10 +44,11 @@ function Main({ data, error }) {
       <div>
           <style jsx>{`
             div {
-              margin: 50px 5%;
+              margin: 200px 5%;
             }
           `}</style>
           {bookElements}
+          <Shelf />
         </div>
       </div>
   )

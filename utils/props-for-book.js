@@ -135,7 +135,8 @@ function getPropsForBook(book) {
     backgroundColor: getBackgroundColor(book),
     fontSize: getFontSize(title),
     fontFamily: getFontFamily(book),
-    titleClassName: titleClassName
+    titleClassName: titleClassName,
+    link: book.link
   }
 }
 

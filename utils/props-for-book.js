@@ -92,23 +92,23 @@ function getFontFamily(book) {
 
 // Background color
 function getBackgroundColor(book) {
-  if (book.publication_year < 2000) {
-    return 'rgba(219, 118, 86, 1.0)'
+  if (book.publication_year < 1990) {
+    return 'rgb(245, 205, 0)'
   }
-  
+
+  if (book.publication_year < 1995) {
+    return 'rgb(0, 140, 255)'
+  }
+
   if (book.publication_year < 2004) {
-    return 'rgba(201, 184, 119, 1.0)'
+    return 'rgb(0, 170, 30)'
   }
-  
-  if (book.publication_year < 2008) {
-    return 'rgba(81, 67, 142, 1.0)'
-  }
-  
+
   if (book.publication_year < 2015) {
-    return 'rgba(162, 162, 153, 1.0)'
+    return 'rgb(255, 79, 0)'
   }
-  
-  return 'rgba(233, 234, 189, 1.0)'
+
+  return 'rgb(78, 78, 78)'
 }
 
 function getPropsForBook(book) {

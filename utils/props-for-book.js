@@ -70,8 +70,8 @@ function getMargin(book) {
 }
 
 // Font size
-function getFontSize(title) {
-  if (title.length > 20) {
+function getFontSize(title, height) {
+  if (title.length > 20 || height < 170) {
     return '10px'
   }
 
@@ -133,7 +133,7 @@ function getPropsForBook(book) {
     margin: getMargin(book),
     color: getColor(book),
     backgroundColor: getBackgroundColor(book),
-    fontSize: getFontSize(title),
+    fontSize: getFontSize(title, height),
     fontFamily: getFontFamily(book),
     titleClassName: titleClassName,
     link: book.link

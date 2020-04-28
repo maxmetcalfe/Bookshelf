@@ -1,9 +1,14 @@
 
 // Title
 function getTitle(book) {
-  if (book.title.indexOf("(") > -1) {
+  if (book.title.indexOf('(') > -1) {
     return book.title.split('(')[0]
   }
+  
+  if (book.title.indexOf(':') > -1) {
+    return book.title.split(':')[0]
+  }
+
   return book.title
 }
 
@@ -63,10 +68,10 @@ function getMargin(book) {
 // Font size
 function getFontSize(book) {
   if (book.title.length > 15) {
-    return '12px'
+    return '2rem'
   }
 
-  return '25px'
+  return '60px'
 }
 
 // Font color
@@ -87,7 +92,7 @@ function getFontFamily(book) {
     return '\'Rock Salt\', cursive'
   }
 
-  return '\'Satisfy\', cursive'
+  return '\'Cousine\', monospace'
 }
 
 // Background color
@@ -113,10 +118,15 @@ function getBackgroundColor(book) {
 
 function getPropsForBook(book) {
   let height = getHeight(book);
-  let titlePosition = height / 2;
+  let title = getTitle(book);
+
+  // FIXME: Hide long titles, for now.
+  let titleStyle = {
+    display: title.length > 20 ? "none" : "block"
+  }
 
   return {
-    title: getTitle(book),
+    title: title,
     authors: getAuthors(book),
     height: height + "px",
     width: getWidth(book),
@@ -125,7 +135,7 @@ function getPropsForBook(book) {
     backgroundColor: getBackgroundColor(book),
     fontSize: getFontSize(book),
     fontFamily: getFontFamily(book),
-    titlePosition: titlePosition + "px"
+    titleStyle: titleStyle
   }
 }
 

@@ -9,8 +9,7 @@ const Book = (props) => {
       fontSize: props.fontSize,
       color: props.color,
       backgroundColor: props.backgroundColor,
-      fontFamily: props.fontFamily,
-      titlePosition: props.titlePosition
+      fontFamily: props.fontFamily
     }}>
       <style jsx>{`
         .book {
@@ -26,12 +25,16 @@ const Book = (props) => {
 
         .text {
           position: relative;
-          transform: rotate(90deg);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          writing-mode: vertical-rl;
+          text-orientation: upright;
         }
 
       `}</style>
-      <div className='text' style={{
-        top: props.titlePosition
+      <div className='text' style={{  
+        display: props.titleStyle.display
       }}>
         {props.title}
       </div>

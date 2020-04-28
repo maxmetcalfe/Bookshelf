@@ -40,17 +40,19 @@ function Main({ data, error }) {
 
   return (
     <div>
+      <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@1,700&family=Rock+Salt&family=Satisfy&family=Sedgwick+Ave+Display&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
       <div>
-        <style jsx>{`
-          div {
-            margin: 50px 5%;
-          }
-        `}</style>
-        {bookElements}
+          <style jsx>{`
+            div {
+              margin: 50px 5%;
+            }
+          `}</style>
+          {bookElements}
+        </div>
       </div>
-    </div>
   )
 }
+
 
 export const getServerSideProps = async ({ query }) => {
   let data

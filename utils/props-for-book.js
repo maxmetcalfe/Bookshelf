@@ -32,11 +32,11 @@ function getAuthors(book) {
 // Height
 // Rough proporations from https://en.wikipedia.org/wiki/Book_size.
 function getHeight(book) {
-  const FOLLO = 400
-  const QUARTO = 316
-  const OCTAVO = 199
-  const TWELVE = 165
-  const SIXTEEN = 132
+  const FOLLO = 200
+  const QUARTO = 158
+  const OCTAVO = 97
+  const TWELVE = 80
+  const SIXTEEN = 64
 
   if (book.num_pages > 500) {
     return book.num_pages % 2 == 0 ? FOLLO : OCTAVO;
@@ -59,10 +59,10 @@ function getHeight(book) {
 // Width
 function getWidth(book) {
   if (!book.num_pages) {
-    return "60px"
+    return "20px"
   }
 
-  return book.num_pages / 10 + "px"
+  return book.num_pages / 20 + "px"
 }
 
 function getMargin(book) {

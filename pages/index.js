@@ -41,7 +41,9 @@ function Main({ data, error }) {
   return (
     <div>
       <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@1,700&family=Rock+Salt&family=Satisfy&family=Sedgwick+Ave+Display&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-      <div>
+      <div style={{
+        width: data.length * 35 + "px" // Calculate a rough width for the parent container.
+      }}>
           <style jsx>{`
             div {
               margin: 200px 5%;

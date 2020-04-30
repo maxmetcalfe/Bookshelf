@@ -72,10 +72,10 @@ function getMargin(book) {
 // Font size
 function getFontSize(title, height) {
   if (title.length > 20 || height < 170) {
-    return '10px'
+    return '5px'
   }
 
-  return '40px'
+  return '15px'
 }
 
 // Font color

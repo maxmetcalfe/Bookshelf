@@ -31,7 +31,7 @@ function Main({ data, error }) {
 
   let bookElements = []
   data.map((book, i) => {
-    let bookProps = getPropsForBook(book)  
+    let bookProps = getPropsForBook(book)
     bookProps.key = i
     bookElements.push(
       <Book {...bookProps} />
@@ -45,6 +45,10 @@ function Main({ data, error }) {
         width: data.length * 35 + "px" // Calculate a rough width for the parent container.
       }}>
           <style jsx>{`
+            :global(body) {
+              background-color: rgb(255, 246, 201);
+            }
+
             div {
               margin: 200px 5%;
             }
